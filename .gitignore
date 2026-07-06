@@ -32,6 +32,15 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env
+assets
+
+CODE_OF_CONDUCT.md
+
+contributing.md
+license.md
+readme.md
+
+favicon.ico
 
 # vercel
 .vercel
@@ -42,3 +51,5 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+
