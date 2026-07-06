@@ -1,6 +1,6 @@
 // src/inngest/client.ts
 import { Inngest } from "inngest";
-import connectDB from "./db";
+import connectDB from "@/config/db";
 import User from "@/models/User";
 
 export const inngest = new Inngest({ id: "quickcart-next" });
@@ -10,9 +10,11 @@ export const inngest = new Inngest({ id: "quickcart-next" });
 export const syncUserCreation = inngest.createFunction(
   {
     id: "sync-user-from-clerk",
-  },
-  {
-    event: "clerk/user.created",
+    triggers: [
+      {
+        event: "clerk/user.created",
+      },
+    ],
   },
   async ({ event }) => {
     const { id, first_name, last_name, email_addresses, image_url } =
@@ -34,9 +36,11 @@ export const syncUserCreation = inngest.createFunction(
 export const syncUserUpdation = inngest.createFunction(
   {
     id: "update-user-from-clerk",
-  },
-  {
-    event: "clerk/user.updated",
+    triggers: [
+      {
+        event: "clerk/user.updated",
+      },
+    ],
   },
   async ({ event }) => {
     const { id, first_name, last_name, email_addresses, image_url } =
@@ -56,9 +60,11 @@ export const syncUserUpdation = inngest.createFunction(
 export const syncUserDeletion = inngest.createFunction(
   {
     id: "delete-user-from-clerk",
-  },
-  {
-    event: "clerk/user.deleted",
+    triggers: [
+      {
+        event: "clerk/user.deleted",
+      },
+    ],
   },
   async ({ event }) => {
     const { id } = event.data;
